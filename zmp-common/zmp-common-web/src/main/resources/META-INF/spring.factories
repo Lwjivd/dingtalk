@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.zhenergy.zmp.common.web.config.UploadConfig,\
+com.zhenergy.zmp.common.web.config.WebConfig

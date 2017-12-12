@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhenergy.zmp.system.local.extuser.mapper.ExtUserMapper">
+
+    <sql id="selectColumns">
+        SELECT
+            a.id,
+            a.user_id,
+            a.address,
+            a.company_name,
+            a.follower_userid,
+            a.label_ids,
+            a.mobile,
+            a.name,
+            a.remark,
+            a.share_deptids,
+            a.share_userids,
+            a.state_code,
+            a.title,
+            a.create_date,
+            a.update_date,
+            a.del_flag
+        FROM dingtalk_ext_user a
+    </sql>
+
+    <!-- 根据编号获得用户 -->
+    <select id="get" resultType="com.zhenergy.zmp.system.api.entity.ExtUser">
+        <include refid="selectColumns"/>
+        WHERE a.id = #{id}
+    </select>
+
+    <!-- 根据userid查询用户 -->
+    <select id="getByUserId" resultType="com.zhenergy.zmp.system.api.entity.ExtUser">
+        <include refid="selectColumns"/>
+        WHERE a.user_id = #{userId}
+    </select>
+
+    <!-- 分页查询用户信息 -->
+    <select id="findList" resultType="com.zhenergy.zmp.system.api.entity.ExtUser">
+        <include refid="selectColumns"/>
+        WHERE a.del_flag = '0'
+        <if test="userid != null and userid != ''">
+            AND a.user_id like CONCAT('%', #{userId}, '%')
+        </if>
+        <if test="name != null and name != ''">
+            AND a.name like CONCAT('%', #{name}, '%')
+        </if>
+        ORDER BY a.create_date
+    </select>
+
+    <!-- 查询全部用户 -->
+    <select id="findAllList" resultType="com.zhenergy.zmp.system.api.entity.ExtUser">
+        <include refid="selectColumns"/>
+        WHERE a.del_flag = '0'
+        ORDER BY a.create_date
+    </select>
+
+
+	<insert id="insert111">
+        INSERT INTO dingtalk_ext_user (
+            id,
+            user_id,
+            address,
+            company_name,
+            follower_userid,
+            mobile,
+            name,
+            remark,
+            state_code,
+            title,
+            create_date,
+            update_date
+        ) VALUES (
+            #{id},
+            #{userId},
+            #{address},
+            #{companyName},
+            #{followerUserid},
+            #{mobile},
+            #{name},
+            #{remark},
+            #{stateCode},
+            #{title},
+            #{createDate},
+            #{updateDate}
+        )
+    </insert>
+
+
+
+    <!-- 插入用户 -->
+    <insert id="insert">
+        INSERT INTO dingtalk_ext_user (
+            id,
+            user_id,
+            address,
+            company_name,
+            follower_userid,
+            label_ids,
+            mobile,
+            name,
+            remark,
+            share_deptids,
+            share_userids,
+            state_code,
+            title,
+            create_date,
+            update_date
+        ) VALUES (
+            #{id},
+            #{userId},
+            #{address},
+            #{companyName},
+            #{followerUserid},
+            #{labelIds},
+            #{mobile},
+            #{name},
+            #{remark},
+            #{shareDeptids},
+            #{shareUserids},
+            #{stateCode},
+            #{title},
+            #{createDate},
+            #{updateDate}
+        )
+    </insert>
+
+    <!-- 更新用户 -->
+    <update id="update">
+        UPDATE dingtalk_ext_user
+        <set>
+            address = #{address},
+            company_name = #{companyName},
+            follower_userid = #{followerUserid},
+            label_ids = #{labelIds},
+            mobile = #{mobile},
+            name = #{name},
+            remark = #{remark},
+            share_deptids = #{shareDeptids},
+            share_userids = #{shareUserids},
+            state_code = #{stateCode},
+            title = #{title},
+            update_date = #{updateDate},
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <!-- 删除用户 -->
+    <update id="deleteById">
+        UPDATE sys_user
+        SET del_flag = '1'
+        WHERE id = #{id}
+    </update>
+
+
+</mapper>

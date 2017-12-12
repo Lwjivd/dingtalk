@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>zmp-system-provider-dingtalk</artifactId>
+		<groupId>com.zhenergy.zmp.system.dingtalk</groupId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>zmp-system-provider-dingtalk-sdk</artifactId>
+	<packaging>jar</packaging>
+	<name>${project.artifactId}</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.zhenergy.zmp.system</groupId>
+			<artifactId>zmp-system-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+        <dependency>
+            <groupId>com.zhenergy.zmp.common</groupId>
+			<artifactId>zmp-common-redis</artifactId>
+			<version>${project.version}</version>
+        </dependency>
+
+		<dependency>
+			<groupId>taobao-sdk</groupId>
+			<artifactId>taobao-sdk-java</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/taobao-sdk-java-auto_1479188381469-20171026.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+</project>

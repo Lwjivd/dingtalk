@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: Ding Talk User API
+  profiles:
+    active: local
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mybatis/*.xml
+

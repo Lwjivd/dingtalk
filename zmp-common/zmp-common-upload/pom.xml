@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>com.zhenergy.zmp.common</groupId>
+		<artifactId>zmp-common</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<artifactId>zmp-common-upload</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.zhenergy.zmp.common</groupId>
+			<artifactId>zmp-common-utils</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-lang</artifactId>
+					<groupId>commons-lang</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+
+
+
+
+
+
+</project>
